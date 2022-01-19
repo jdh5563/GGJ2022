@@ -9,13 +9,15 @@ public abstract class Robot : MonoBehaviour
 
     protected Vector2 velocity;
 
+    protected ChangeScene sceneChanger;
+
     // Force all robots to implement a collision method
     protected abstract void OnCollisionEnter2D(Collision2D collision);
 
 	// Start is called before the first frame update
 	void Start()
     {
-        
+        sceneChanger = GameObject.Find("GameManager").GetComponent<ChangeScene>();
     }
 
     // Update is called once per frame
@@ -28,8 +30,8 @@ public abstract class Robot : MonoBehaviour
     {
         velocity.y = rb.velocity.y;
         rb.velocity = velocity;
-	StayInBounds();
-	animator.SetFloat("Speed", Mathf.Abs(velocity.x));
+	    StayInBounds();
+	    animator.SetFloat("Speed", Mathf.Abs(velocity.x));
     }
 
     /// <summary>
@@ -49,8 +51,6 @@ public abstract class Robot : MonoBehaviour
         {
             velocity = new Vector2(0, rb.velocity.y);
         }
-
-        GameManager.TrySwitchRobots();
     }
 
 	private void StayInBounds()

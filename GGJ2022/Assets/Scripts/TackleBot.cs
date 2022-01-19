@@ -9,12 +9,6 @@ public class TackleBot : Robot
 
 	private bool isTackling = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     protected override void Update()
     {
@@ -44,12 +38,12 @@ public class TackleBot : Robot
 				}
 				else
 				{
-					Debug.Log("Lose");
+					sceneChanger.EndGame();
 				}
 			}
 			else
 			{
-				Debug.Log("Lose");
+				sceneChanger.EndGame();
 			}
 		}
 	}
@@ -61,6 +55,7 @@ public class TackleBot : Robot
 	{
 		if (!isTackling){
 			base.ProcessInput();
+			GameManager.TrySwitchRobots();
 			if (Input.GetKeyDown(KeyCode.Space))
 			{
 				StartCoroutine(Tackle());

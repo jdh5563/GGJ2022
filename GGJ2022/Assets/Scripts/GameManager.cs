@@ -33,21 +33,24 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // When an obstacle goes off screen:
-        // 1. Destroy it
-        // 2. Spawn a new obstacle at the end of the line
-        // 3. Increase the speed of all the obstacles
-        if(obstacles[0].transform.position.x < (-Camera.main.aspect * Camera.main.orthographicSize) - obstacles[0].transform.localScale.x)
-		{
-            GameObject obstacleToDestroy = obstacles[0];
-            obstacles.RemoveAt(0);
-            Destroy(obstacleToDestroy);
-            SpawnObstacle(obstacleSpawnX);
-            foreach(GameObject obstacle in obstacles)
-			{
-                // TODO - increase the speed of the obstacles after each destroyed obstacle
-			}
-		}
+        if (obstacles.Count > 0)
+        {
+            // When an obstacle goes off screen:
+            // 1. Destroy it
+            // 2. Spawn a new obstacle at the end of the line
+            // 3. Increase the speed of all the obstacles
+            if (obstacles[0].transform.position.x < (-Camera.main.aspect * Camera.main.orthographicSize) - obstacles[0].transform.localScale.x)
+            {
+                GameObject obstacleToDestroy = obstacles[0];
+                obstacles.RemoveAt(0);
+                Destroy(obstacleToDestroy);
+                SpawnObstacle(obstacleSpawnX);
+                foreach (GameObject obstacle in obstacles)
+                {
+                    // TODO - increase the speed of the obstacles after each destroyed obstacle
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -96,8 +99,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="spawnX">The x-coordinate to spawn the obstacle</param>
     private void SpawnObstacle(float spawnX)
-	{
+    {
         int randomIndex = Random.Range(0, obstaclePrefabs.Count);
         obstacles.Add(Instantiate(obstaclePrefabs[randomIndex], new Vector2(spawnX, obstacleSpawnY * randomIndex), Quaternion.identity));
-	}
+    }
 }
