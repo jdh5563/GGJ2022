@@ -11,6 +11,10 @@ public class ShrinkBot : Robot
     private float maxSize = 1.0f;
     private float scalingProgress = 0f;
 
+    private void Awake()
+    {
+	StartCoroutine(Grow());
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +65,7 @@ public class ShrinkBot : Robot
     /// </summary>
     private IEnumerator Shrink()
 	{
-        hasShrunk = true;
+	hasShrunk = true;
 
         while(transform.localScale.y > minSize)
 		{
@@ -74,7 +78,12 @@ public class ShrinkBot : Robot
 
         yield return new WaitForSeconds(shrinkDuration);
 
-        while (transform.localScale.y < maxSize)
+	StartCoroutine(Grow());
+    }
+
+    private IEnumerator Grow()
+    {
+	while (transform.localScale.y < maxSize)
         {
             scalingProgress += 0.1f;
             transform.localScale = new Vector2(Mathf.Lerp(minSize, maxSize, scalingProgress), Mathf.Lerp(minSize, maxSize, scalingProgress));

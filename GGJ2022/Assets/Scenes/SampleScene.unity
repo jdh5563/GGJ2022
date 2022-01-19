@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 648132005}
   - component: {fileID: 648132006}
   - component: {fileID: 648132007}
+  - component: {fileID: 648132008}
   m_Layer: 0
   m_Name: Tackle Bot
   m_TagString: Player
@@ -434,8 +435,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 648132006}
   maxSpeed: 5
-  tackleDuration: 1
+  animator: {fileID: 648132008}
+  tackleDuration: 0.5
   tackleBoost: 3
+--- !u!95 &648132008
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648132002}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9de99db5ce8c32f4783dc267622e422f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1160646696
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +579,7 @@ GameObject:
   - component: {fileID: 1444323943}
   - component: {fileID: 1444323942}
   - component: {fileID: 1444323941}
+  - component: {fileID: 1444323946}
   m_Layer: 0
   m_Name: Jump Bot
   m_TagString: Player
@@ -579,6 +601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1444323942}
   maxSpeed: 5
+  animator: {fileID: 1444323946}
   jumpSpeed: 11
 --- !u!50 &1444323942
 Rigidbody2D:
@@ -692,6 +715,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1444323946
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444323940}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 98e8ee4974012114dad97c439c69e73e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1824438662
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,6 +876,7 @@ GameObject:
   - component: {fileID: 1858872994}
   - component: {fileID: 1858872993}
   - component: {fileID: 1858872992}
+  - component: {fileID: 1858872997}
   m_Layer: 0
   m_Name: Shrink Bot
   m_TagString: Player
@@ -855,6 +898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1858872993}
   maxSpeed: 5
+  animator: {fileID: 1858872997}
   shrinkDuration: 1
 --- !u!50 &1858872993
 Rigidbody2D:
@@ -968,3 +1012,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1858872997
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858872991}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 923e09d6183ae9647ab4d9859aa79a86, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

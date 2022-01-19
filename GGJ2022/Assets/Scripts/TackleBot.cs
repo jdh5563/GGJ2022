@@ -4,7 +4,7 @@ using UnityEngine;
 public class TackleBot : Robot
 {
 	// Fields
-	[SerializeField] private int tackleDuration = 1;
+	[SerializeField] private float tackleDuration = 0.5f;
 	[SerializeField] private int tackleBoost = 6;
 
 	private bool isTackling = false;
@@ -76,8 +76,10 @@ public class TackleBot : Robot
 	{
 		velocity.x = maxSpeed + tackleBoost;
 		isTackling = true;
+		animator.SetBool("IsTackling", true);
 		yield return new WaitForSeconds(tackleDuration);
 		velocity.x = 0;
 		isTackling = false;
+		animator.SetBool("IsTackling", false);
 	}
 }

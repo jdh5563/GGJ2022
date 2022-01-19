@@ -5,6 +5,7 @@ public abstract class Robot : MonoBehaviour
     // Fields
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected float maxSpeed;
+    [SerializeField] protected Animator animator;
 
     protected Vector2 velocity;
 
@@ -27,6 +28,8 @@ public abstract class Robot : MonoBehaviour
     {
         velocity.y = rb.velocity.y;
         rb.velocity = velocity;
+	StayInBounds();
+	animator.SetFloat("Speed", Mathf.Abs(velocity.x));
     }
 
     /// <summary>
@@ -49,4 +52,19 @@ public abstract class Robot : MonoBehaviour
 
         GameManager.TrySwitchRobots();
     }
+
+	private void StayInBounds()
+	{
+	    Vector2 currentPosition = (Vector2)transform.position;
+	    if(currentPosition.x > Camera.main.aspect * Camera.main.orthographicSize)
+	    {
+		currentPosition.x = Camera.main.aspect * Camera.main.orthographicSize;
+	    }
+	    else if(currentPosition.x < -Camera.main.aspect * Camera.main.orthographicSize)
+	    {
+		currentPosition.x = -Camera.main.aspect * Camera.main.orthographicSize;
+	    }
+	    
+	    transform.position = currentPosition;
+	}
 }

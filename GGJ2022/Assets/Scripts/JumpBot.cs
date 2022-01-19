@@ -34,6 +34,7 @@ public class JumpBot : Robot
         if(collision.collider.tag == "Platform")
 		{
             isJumping = false;
+	    animator.SetBool("IsJumping", false);
 		}
         else if (collision.collider.tag == "Obstacle")
         {
@@ -63,6 +64,7 @@ public class JumpBot : Robot
     private void Jump()
 	{
         isJumping = true;
+	animator.SetBool("IsJumping", true);
         rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
 	}
 }
